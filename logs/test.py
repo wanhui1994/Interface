@@ -10,41 +10,30 @@ class Mysql():
         self.password=password
         self.database=database
         self.charset=charset
-        self.connect=None
+        self.db=None
         self.cursor=None
     #链接数据库方法
     def connect(self):
         try:
-            self.connect = pymysql.connect(host=self.host,port=self.port,user=self.user,password=self.password,database=self.database,charset=self.charset)
-            self.cursor = self.connect.cursor()
+            self.db = pymysql.connect(host=self.host,port=self.port,user=self.user,password=self.password,database=self.database,charset=self.charset)
+            self.cursor = self.db.cursor()
             return True
         except Exception:
             print("错误信息：",Exception)
-
-    def close(self):
-        self.cursor.close()
-        self.connect.close()
-
-    def single (self,sql):
-        try:
-            self.cursor.execute(sql)
-            self.connect.commit()
-        except Exception:
-            print("创建表的错误信息：",Exception)
-            self.connect.rollback()
-
     def batch(self,path):
+        self.connect()
         try:
-            self.path=path
             with open(path) as f:
                 sql=f.read()
+                print(sql)
                 self.cursor.execute(sql)
-                self.connect.commit()
+                self.db.commit()
                 self.cursor.close()
-                self.connect.close()
+                self.db.close()
+                return self.cursor
         except Exception:
             print("插入数据的错误信息：",Exception)
-            self.connect.rollback()   #数据回滚
+            self.db.rollback()   #数据回滚
 
 if __name__ == '__main__':
     mysql1=Mysql("192.168.10.215",3306,"root","123456","testlibrary",charset="utf8")

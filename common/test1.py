@@ -3,16 +3,14 @@ import pymysql
 import requests
 import json
 class Test():
-    # 通过sql将此地区的所有更新的用户都获取到（获取账号、手机号、QQ号、type值）
+
     def mysql(self,ho,pr,us,pas,base,charset="utf8"):
         db=pymysql.connect(host=ho,port=pr,user=us,password=pas,database=base,charset="utf8")
         cu=db.cursor()
-        sql="""SELECT * FROM test WHERE name='万惠'"""
+        sql="""SELECT * FROM `course` WHERE FIRST_NAME='WH1';"""
         cu.execute(sql)
         dis=cu.description
         all=cu.fetchall()
-        # print(len(all))
-        # print(all[1][0:3])
         userAccount=[]
         userAccount1=[]
         userPhone=[]
@@ -30,7 +28,7 @@ class Test():
         for j in range(len(userAccount)):
             url1="http://xf.faxuan.net/useris/service/getdetail?userAccount="
             url2="&key=Wed+May+02+2018+17%3A40%3A55+GMT%2B0800"
-            url=url1+userAccount[j]+url2
+            url=url1+str(userAccount[j])+url2
             r = requests.get(url)
             a=r.json()
             p1=a.index('userAccount')
@@ -63,9 +61,9 @@ class Test():
             if type[a4]==type1[a4]:
                 pass
             else:
-                print('QQ号不一致：','id',a4,type[a4],type1[a4])
+                print('type值不一致：','id',a4,type[a4],type1[a4])
 
 
 a=Test()
-a.mysql('localhost',3306,'root','123456','testlibrary')
+a.mysql('192.168.10.215',3306,'root','123456','testlibrary')
 
