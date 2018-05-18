@@ -1,6 +1,6 @@
 # coding=utf-8
 import pymysql
-from task.config import read_config
+from Interface.config import read_config
 class Mysql():
     # 初始化
     def __init__(self,host,port,user,password,database,charset="utf8"):

@@ -1,8 +1,8 @@
 # coding=utf-8
 import pymysql
-from task.common import mysql_pub
-from task.config import read_config
-from task.common import requests_pub
+from Interface.common import mysql_pub
+from Interface.config import read_config
+from Interface.common import requests_pub
 class Tastcase():
     def setUp(self):
         pass
