@@ -49,6 +49,7 @@ class Mysql():
         except Exception:
             print("插入数据的错误信息：",Exception)
             self.db.rollback()   #数据回滚
+
     def all(self):
         value = self.cursor.fetchall()
         return value

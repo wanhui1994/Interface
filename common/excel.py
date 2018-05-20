@@ -34,7 +34,7 @@ class Excelwrite():
             self.sh=self.wr.add_sheet(name)  #The created table name
 
         except Exception:
-            print('文件创建失败，请检查！')
+            print('文件创建失败，请检查创建的文件名是否存在！')
 
     def write(self,lines,col,name):
         value = self.sh.write(lines,col,name)
@@ -43,12 +43,3 @@ class Excelwrite():
     def save(self,path):
         path=path+self.filname+'.xls'
         self.wr.save(path)
-
-
-
-
-a=Excelwrite()
-a.new_excel('test','test')
-for i in range(10):
-    a.write(i,i,'ceshi')
-    a.save("C:/Users/admin/Desktop/")

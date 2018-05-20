@@ -27,5 +27,9 @@ class Request():
     def json(self):
         self.json = self.repson.json()
         return self.json
-
+    def json_dictionary(self):
+        # self.dict = self.json
+        for i in range(self.json):
+            self.dict={i[0]:i[1]}
+        return self.dict
 
