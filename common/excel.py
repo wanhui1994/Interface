@@ -32,7 +32,6 @@ class Excelwrite():
         try:
             self.wr=xlwt.Workbook(filname)  #The name of the file created
             self.sh=self.wr.add_sheet(name)  #The created table name
-
         except Exception:
             print('文件创建失败，请检查创建的文件名是否存在！')
 

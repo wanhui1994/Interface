@@ -1,11 +1,14 @@
 # coding=utf-8
-a=1
-b=1
-c=0
-d=1
-while d<10:
-    c=a+b
-    a=b
-    b=c
-    d+=1
-    print(c)
+
+import requests
+import requests.exceptions
+
+
+# url="https://www.baidu.com/@@"
+url="http://xf.faxuan.net//useris/service/getdetail?userAccount=2342312312312"
+data=requests.get(url)
+# try:
+#     print('pass')
+# except requests.exceptions.HTTPError:
+#     print('ConnectionError -- please wait 3 seconds')
+
