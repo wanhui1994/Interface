@@ -6,6 +6,7 @@ class Excelread():
         pass
 
     def open(self,path,name):
+        # 打开excel文件
         try:
               self.wb = xlrd.open_workbook(path)
               self.sh = self.wb.sheet_by_name(name)
@@ -13,14 +14,17 @@ class Excelread():
             raise NameError
 
     def lines(self,number):
+        #excel 行
         value = self.sh.row_values(int(number))
         return value
 
     def columns(self,number):
+         #excel 列
         value = self.sh.col_values(int(number))
         return value
 
     def allshee(self):
+         #excel 总数
         value = self.wb.sheet_names()
         return value
 

@@ -19,7 +19,7 @@ class Mysql():
             self.cursor = self.db.cursor()
             return True
         except Exception:
-            print("错误信息：",Exception)
+            print("数据库连接失败",Exception)
 
     def close(self):
         self.cursor.close()
@@ -35,6 +35,13 @@ class Mysql():
         except Exception:
             print("创建表的错误信息：",Exception)
             self.db.rollback()
+
+    def ff(self,sql):
+        self.connect()
+        try:
+           self.cursor.execute(sql)
+        except Exception:
+            print("错误:",Exception)
 
     def batch(self,path):
         self.connect()

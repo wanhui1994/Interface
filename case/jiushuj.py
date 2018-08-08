@@ -15,7 +15,7 @@ class Tastcase():
         psw=read_config.config.get("localhost","password")
         self.mysql=mysql_pub.Mysql(ip,int(port),name,psw,"testlibrary",charset="utf8")
         self.mysql.connect()
-        self.mysql.single("SELECT * FROM base_mobile_redis_2 WHERE user_account='5304280130021';")
+        self.mysql.single("SELECT * FROM base_mobile_redis_2;")
         # mysql.batch("C:/Users/admin/Desktop/sql/2.sql")
         self.a=self.mysql.all()
 
@@ -60,6 +60,7 @@ class Tastcase():
                 Excel.new_excel('notdata','notdata')
                 Excel.write(0,col1,'test')
                 col1+=1
+				
     def log(self,mamessage):
         lg=loging.Log()
         lg.go()

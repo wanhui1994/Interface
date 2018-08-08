@@ -6,14 +6,14 @@ class Request():
         pass
 
     def url(self,url):
-        self.url= url
+        self.url1= url
 
     def params(self,param):
-        self.params=param
+        self.params1=param
 
     def get_request(self):
         try:
-            self.repson = requests.get(self.url,self.params,)
+            self.repson = requests.get(self.url1,self.params1,timeout=10)
             return self.repson
         except TimeoutError:
             print('地址访问异常')
