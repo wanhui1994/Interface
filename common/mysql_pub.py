@@ -27,6 +27,7 @@ class Mysql():
         print('关闭数据库！')
 
     def single (self,sql):
+        '''插入/更新数据'''
         self.connect()
         try:
             self.cursor.execute(sql)
@@ -36,11 +37,12 @@ class Mysql():
             print("创建表的错误信息：",Exception)
             self.db.rollback()
 
-    def ff(self,sql):
+    def query(self,sql):
+        '''查询数据'''
         self.connect()
         try:
            self.cursor.execute(sql)
-        except Exception:
+        except :
             print("错误:",Exception)
 
     def batch(self,path):
@@ -56,6 +58,8 @@ class Mysql():
         except Exception:
             print("插入数据的错误信息：",Exception)
             self.db.rollback()   #数据回滚
+    def getdata(self):
+        '''根据查询结果获取对应列的数据'''
 
     def all(self):
         value = self.cursor.fetchall()
